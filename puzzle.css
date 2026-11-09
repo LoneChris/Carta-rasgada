@@ -1,0 +1,93 @@
+/* Configurações gerais da página */
+body {
+    margin: 0;
+    padding: 20px;
+
+    background-color: #1b1b1b;
+    font-family: Arial, sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+}
+
+/* Área principal do quebra-cabeça */
+#carta-puzzle {
+    width: 100%;
+    max-width: 900px;
+
+    display: flex;
+    justify-content: center;
+}
+
+/* Área onde os fragmentos serão movimentados */
+.puzzle-area {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 3 / 2;
+
+    background-color: #292929;
+
+    border: 2px solid #555;
+    border-radius: 8px;
+
+    overflow: hidden;
+    user-select: none;
+}
+
+/* Aparência individual de cada fragmento */
+.fragmento {
+    position: absolute;
+
+    height: auto;
+    object-fit: contain;
+
+    cursor: grab;
+
+    user-select: none;
+    -webkit-user-drag: none;
+    touch-action: none;
+
+    transition: filter 0.15s ease;
+}
+
+/* Aparência enquanto o jogador segura um fragmento */
+.fragmento.arrastando {
+    cursor: grabbing;
+    filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.6));
+
+    z-index: 1000 !important;
+}
+
+/* Aparência dos fragmentos já encaixados */
+.fragmento.encaixado {
+    cursor: default;
+    filter: none;
+}
+
+/* Mensagem exibida quando o puzzle é concluído */
+.mensagem-conclusao {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 80%;
+
+    padding: 20px;
+
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+
+    text-align: center;
+    font-size: 18px;
+
+    border-radius: 8px;
+
+    z-index: 2000;
+}
