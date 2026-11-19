@@ -1,0 +1,210 @@
+
+/* =====================================================
+   1. CONFIGURAÇÕES GERAIS DA PÁGINA
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    padding: 16px;
+
+    width: 100%;
+
+    height: 100vh;
+    height: 100dvh;
+
+    background-color: #1b1b1b;
+
+    font-family: Arial, sans-serif;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    /* Impede a rolagem da página. */
+    overflow: hidden;
+
+}
+
+
+/* =====================================================
+   2. ÁREA PRINCIPAL DO PUZZLE
+===================================================== */
+
+#carta-puzzle {
+
+    width: min(
+        900px,
+        92vw,
+        calc((100dvh - 32px) * 1.5)
+    );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+/* =====================================================
+   3. TABULEIRO
+===================================================== */
+
+.puzzle-area {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 3 / 2;
+
+    background-color: #292929;
+
+    border: 2px solid #555;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    user-select: none;
+
+    touch-action: none;
+
+}
+
+
+/* =====================================================
+   4. FRAGMENTOS
+===================================================== */
+
+.fragmento {
+
+    position: absolute;
+
+    height: auto;
+
+    object-fit: contain;
+
+    cursor: grab;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+    touch-action: none;
+
+    transition: filter 0.15s ease;
+
+}
+
+
+/* =====================================================
+   5. FRAGMENTOS SENDO ARRASTADOS
+===================================================== */
+
+.fragmento.arrastando {
+
+    cursor: grabbing;
+
+    filter: drop-shadow(
+        0 5px 8px rgba(0, 0, 0, 0.6)
+    );
+
+    z-index: 1000 !important;
+
+}
+
+
+/* =====================================================
+   6. FRAGMENTOS CONECTADOS
+===================================================== */
+
+.fragmento.conectado {
+
+    cursor: grab;
+
+    filter: none;
+
+}
+
+
+/* =====================================================
+   7. MENSAGEM DE CONCLUSÃO
+===================================================== */
+
+.mensagem-conclusao {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 80%;
+
+    max-height: 80%;
+
+    overflow-y: auto;
+
+    padding: 20px;
+
+    background-color: rgba(0, 0, 0, 0.85);
+
+    color: white;
+
+    text-align: center;
+
+    font-size: 18px;
+
+    line-height: 1.5;
+
+    border-radius: 8px;
+
+    z-index: 2000;
+
+}
+
+
+/* =====================================================
+   8. RESPONSIVIDADE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    body {
+
+        padding: 10px;
+
+    }
+
+    #carta-puzzle {
+
+        width: min(
+            100%,
+            calc((100dvh - 20px) * 1.5)
+        );
+
+    }
+
+    .mensagem-conclusao {
+
+        width: 90%;
+
+        padding: 12px;
+
+        font-size: 14px;
+
+    }
+
+}
